@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c5njx7cucv3w4"
+path="res://.godot/imported/Skeleton_Arrow.obj-3dad066472c17907dc1ac4efaae6c171.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Skeleton_Arrow.obj-3dad066472c17907dc1ac4efaae6c171.mesh"]
+
+source_file="res://assets/3d/weapons/obj/Skeleton_Arrow.obj"
+dest_files=["res://.godot/imported/Skeleton_Arrow.obj-3dad066472c17907dc1ac4efaae6c171.mesh", "res://.godot/imported/Skeleton_Arrow.obj-3dad066472c17907dc1ac4efaae6c171.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
