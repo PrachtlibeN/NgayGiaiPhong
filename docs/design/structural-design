@@ -1,0 +1,79 @@
+project_root/
+│
+├── .godot/                  # Thư mục tự động của Godot (không chỉnh sửa)
+├── assets/                  # Tất cả tài nguyên nghệ thuật và âm thanh
+│   ├── 3d/                 
+│   │   ├── characters/      # Nhân vật chính, NPC, quái vật
+│   │   │   ├── player/
+│   │   │   ├── npcs/
+│   │   │   └── enemies/
+│   │   ├── weapons/         # Vũ khí và hiệu ứng vũ khí
+│   │   ├── props/           # Vật thể tương tác trong game
+│   │   └── environment/     # Môi trường và level geometry
+│   │       ├── textures/    # Texture cho môi trường
+│   │       └── materials/   # Vật liệu PBR
+│   ├── audio/
+│   │   ├── sfx/            # Hiệu ứng âm thanh
+│   │   └── music/          # Nhạc nền theo khu vực/cảm xúc
+│   ├── ui/
+│   │   ├── icons/          # Biểu tượng kỹ năng, vật phẩm
+│   │   ├── fonts/          # Font chữ
+│   │   └── themes/         # Giao diện người dùng
+│   └── shaders/            # Shader tùy chỉnh (water, fog, effect)
+│
+├── scenes/                 # Tất cả file scene Godot (.tscn)
+│   ├── core/               # Hệ thống lõi
+│   │   ├── game_manager.tscn
+│   │   └── player_camera.tscn
+│   ├── actors/             # Các entity tương tác
+│   │   ├── player/         # Scene player + components
+│   │   ├── npcs/           # NPC scenes và dialogue triggers
+│   │   └── enemies/        # Các loại quái vật
+│   ├── world/              # Môi trường game
+│   │   ├── level_01/       # Scene level + lighting
+│   │   ├── interactables/  # Cửa, công tắc, puzzle objects
+│   │   └── skyboxes/       # Bầu trời và HDRI
+│   ├── ui/                 # Giao diện người dùng
+│   │   ├── hud.tscn        # Thanh máu, đạn, la bàn
+│   │   ├── inventory.tscn  # Hệ thống túi đồ
+│   │   └── pause_menu.tscn
+│   └── system/             # Các hệ thống con
+│       ├── damage_numbers.tscn
+│       └── projectile_system.tscn
+│
+├── scripts/                # Tất cả script GDScript/C#
+│   ├── core/               # Script hệ thống
+│   │   ├── game_state.gd   # Quản lý trạng thái game
+│   │   └── save_system.gd  # Hệ thống lưu game
+│   ├── actors/             
+│   │   ├── player/         # Điều khiển, combat, inventory
+│   │   ├── ai/             # Hành vi NPC và enemy AI
+│   │   └── character_base.gd # Lớp nhân vật cơ sở
+│   ├── weapons/            # Hệ thống vũ khí
+│   │   ├── weapon_base.gd  # Lớp vũ khí cơ sở
+│   │   └── reload_system.gd
+│   ├── rpg/                # Hệ thống RPG
+│   │   ├── quest_system/   # Quản lý nhiệm vụ
+│   │   ├── dialogue/       # Hội thoại và branching
+│   │   └── skill_tree.gd   # Cây kỹ năng
+│   └── utils/              # Tiện ích
+│       ├── helpers.gd      # Hàm global
+│       └── raycast_utils.gd # Hỗ trợ combat
+│
+├── config/                 # File cấu hình
+│   ├── input/              # Action mappings
+│   ├── difficulty/         # Cấu hình độ khó
+│   └── localization/       # Ngôn ngữ và bản dịch
+│
+├── autoloads/              # Script tự động tải
+│   ├── audio_manager.gd    # Quản lý âm thanh
+│   └── event_bus.gd        # Hệ thống event global
+│
+├── data/                   # Dữ liệu game (JSON/CSV)
+│   ├── items/              # Vật phẩm và stats
+│   ├── quests/             # Dữ liệu nhiệm vụ
+│   └── lore/               # Lịch sử thế giới
+│
+└── docs/                   # Tài liệu
+    ├── design/             # Tài liệu thiết kế
+    └── technical/          # API docs và flowcharts
