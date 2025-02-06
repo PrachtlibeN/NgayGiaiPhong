@@ -1,10 +1,11 @@
 extends CharacterBody3D
 
 @onready var state_machine = $AnimationTree["parameters/playback"]
+@onready var camera = $Camera3D
 
 var speed = 5.0
 var jump_speed = 4.5
-var mouse_sensitivity = 0.002
+var mouse_sensitivity = 0.008
 var is_run = false
 
 func _physics_process(delta: float) -> void:
@@ -34,7 +35,11 @@ func get_input() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
-	
+		camera.rotate_x(-event.relative.y * mouse_sensitivity)
+		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -PI / 2, PI / 2)
+		
+
+
 	if event.is_action_pressed("ui_accept") and is_on_floor():
 		state_machine.travel("Jump_Idle")
 		velocity.y = jump_speed
