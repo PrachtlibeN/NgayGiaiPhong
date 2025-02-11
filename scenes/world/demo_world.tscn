@@ -1,22 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8tgifoq8m6xt"]
+[gd_scene load_steps=6 format=3 uid="uid://b8tgifoq8m6xt"]
 
 [ext_resource type="PackedScene" uid="uid://bu3pyxi63p6vo" path="res://scenes/actors/player.tscn" id="1_hjbmc"]
+[ext_resource type="Texture2D" uid="uid://cryqgvo3272ow" path="res://autumn_field_puresky_2k.hdr" id="1_nst34"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pp3rg"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xwvr1"]
+panorama = ExtResource("1_nst34")
 
 [sub_resource type="Sky" id="Sky_d830h"]
-sky_material = SubResource("ProceduralSkyMaterial_pp3rg")
+sky_material = SubResource("PanoramaSkyMaterial_xwvr1")
 
 [sub_resource type="Environment" id="Environment_78cc3"]
 background_mode = 2
 sky = SubResource("Sky_d830h")
 tonemap_mode = 2
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fanuv"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_xosvk"]
 
 [node name="DemoWorld" type="Node3D"]
 
@@ -24,18 +20,16 @@ tonemap_mode = 2
 environment = SubResource("Environment_78cc3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0.486026, -0.611654, 0.624226, -0.117384, 0.662102, 0.740163, 0, 0, 0)
+transform = Transform3D(-0.411544, -0.790294, -0.453947, 0.486026, -0.611654, 0.624226, -0.77098, 0.0362661, 0.635826, 0, 2.82354, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_hjbmc")]
+can_sprint = true
+can_freefly = true
 
-[node name="Floor" type="StaticBody3D" parent="."]
+[node name="Floor" type="Node3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_fanuv")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, -0.5, 0)
-mesh = SubResource("BoxMesh_xosvk")
-skeleton = NodePath("../..")
+[node name="CSGBox3D" type="CSGBox3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+use_collision = true
+size = Vector3(20, 0.2, 20)
