@@ -11,6 +11,7 @@ sky_material = SubResource("PanoramaSkyMaterial_xwvr1")
 
 [sub_resource type="Environment" id="Environment_78cc3"]
 background_mode = 2
+background_energy_multiplier = 0.4
 sky = SubResource("Sky_d830h")
 tonemap_mode = 2
 
