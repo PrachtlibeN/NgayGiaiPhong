@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2r3pg817i2ep"]
+[gd_scene load_steps=10 format=3 uid="uid://c2r3pg817i2ep"]
 
+[ext_resource type="Texture2D" uid="uid://cegcf23l5ih7f" path="res://assets/3d/environment/square_tiles_03_diff_1k.jpg" id="1_df223"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://scenes/actors/player/player.tscn" id="1_gy6pw"]
-[ext_resource type="Texture2D" uid="uid://cegcf23l5ih7f" path="res://scenes/actors/player/square_tiles_03_diff_1k.jpg" id="1_tv3rv"]
-[ext_resource type="Texture2D" uid="uid://cxmroel74o2kp" path="res://scenes/actors/player/square_tiles_03_nor_gl_1k.jpg" id="2_duwnx"]
+[ext_resource type="Texture2D" uid="uid://cxmroel74o2kp" path="res://assets/3d/environment/square_tiles_03_nor_gl_1k.jpg" id="2_i1ctd"]
 [ext_resource type="PackedScene" uid="uid://b3xpie2jipwew" path="res://scenes/actors/enemy/enemy.tscn" id="4_aynhx"]
+[ext_resource type="Script" path="res://scripts/actors/enemy/enemy.gd" id="5_4ggyt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5dy1t"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,12 +19,12 @@ sky = SubResource("Sky_ulp08")
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urj3v"]
-albedo_texture = ExtResource("1_tv3rv")
+albedo_texture = ExtResource("1_df223")
 emission_enabled = true
 emission_energy_multiplier = 16.0
 normal_enabled = true
 normal_scale = 4.16
-normal_texture = ExtResource("2_duwnx")
+normal_texture = ExtResource("2_i1ctd")
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
 uv2_triplanar_sharpness = 13.9288
@@ -49,6 +50,7 @@ size = Vector3(30, 0.2, 30)
 cast_shadow = 0
 
 [node name="Enemy" parent="." instance=ExtResource("4_aynhx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.6)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, -3.6)
+script = ExtResource("5_4ggyt")
 
 [editable path="ProtoController"]

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cegcf23l5ih7f"
-path.s3tc="res://.godot/imported/square_tiles_03_diff_1k.jpg-fcbc2fc9cb8362e49036e696c4a70979.s3tc.ctex"
+uid="uid://cxmroel74o2kp"
+path.s3tc="res://.godot/imported/square_tiles_03_nor_gl_1k.jpg-16401dfb2539fcbbeb17f7d02f511b12.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/actors/player/square_tiles_03_diff_1k.jpg"
-dest_files=["res://.godot/imported/square_tiles_03_diff_1k.jpg-fcbc2fc9cb8362e49036e696c4a70979.s3tc.ctex"]
+source_file="res://assets/3d/environment/square_tiles_03_nor_gl_1k.jpg"
+dest_files=["res://.godot/imported/square_tiles_03_nor_gl_1k.jpg-16401dfb2539fcbbeb17f7d02f511b12.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://scenes/actors/player/square_tiles_03_nor_gl_1k.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
