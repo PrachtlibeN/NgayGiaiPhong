@@ -44,6 +44,18 @@ material_overlay = SubResource("StandardMaterial3D_urj3v")
 use_collision = true
 size = Vector3(30, 0.2, 30)
 
+[node name="Floor2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5.4)
+material_overlay = SubResource("StandardMaterial3D_urj3v")
+use_collision = true
+size = Vector3(5, 0.2, 5)
+
+[node name="Floor3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2, 1.5, 5.4)
+material_overlay = SubResource("StandardMaterial3D_urj3v")
+use_collision = true
+size = Vector3(5, 0.2, 5)
+
 [node name="ProtoController" parent="." instance=ExtResource("1_gy6pw")]
 
 [node name="Mesh" parent="ProtoController" index="0"]

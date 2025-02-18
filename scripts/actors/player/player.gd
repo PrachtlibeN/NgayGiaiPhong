@@ -10,6 +10,8 @@ extends CharacterBody3D
 @export var can_sprint : bool = false
 ## Can we press to enter freefly mode (noclip)?
 @export var can_freefly : bool = false
+## Can we crouch?
+@export var can_crouch : bool = false
 
 @export_group("Speeds")
 ## Look around rotation speed.
@@ -22,6 +24,8 @@ extends CharacterBody3D
 @export var sprint_speed : float = 10.0
 ## How fast do we freefly?
 @export var freefly_speed : float = 25.0
+## How fast do we crouch?
+@export_range(5, 10, 0.1) var crouch_speed : float = 7.0
 
 @export_group("Input Actions")
 ## Name of Input Action to move Left.
@@ -38,20 +42,27 @@ extends CharacterBody3D
 @export var input_sprint : String = "Shift"
 ## Name of Input Action to toggle freefly mode.
 @export var input_freefly : String = "E"
+## Name of Input Action to Crouch
+@export var input_courch : String = "C"
+
 
 var mouse_captured : bool = false
 var look_rotation : Vector2
 var move_speed : float = 0.0
 var freeflying : bool = false
+var _is_crouching : bool = false
 
 ## IMPORTANT REFERENCES
 @onready var head: Node3D = $Head
 @onready var collider: CollisionShape3D = $Collider
+@onready var animationplayer : AnimationPlayer = $Animation
+@onready var crouchcheckcast : ShapeCast3D = $CrouchCheckCast 
 
 func _ready() -> void:
 	check_input_mappings()
 	look_rotation.y = rotation.y
 	look_rotation.x = head.rotation.x
+	crouchcheckcast.add_exception($".")
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
@@ -95,6 +106,9 @@ func _physics_process(delta: float) -> void:
 			move_speed = sprint_speed
 	else:
 		move_speed = base_speed
+
+	if can_crouch and Input.is_action_just_pressed(input_courch):
+		toggle_crouch()
 
 	# Apply desired movement to velocity
 	if can_move:
@@ -146,6 +160,14 @@ func release_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_captured = false
 
+func toggle_crouch():
+	if _is_crouching and not crouchcheckcast.is_colliding():
+		animationplayer.play("Crouch", -1, -crouch_speed, true)
+		can_jump = true
+	elif not _is_crouching:
+		animationplayer.play("Crouch", -1, crouch_speed)
+		can_jump = false
+
 
 ## Checks if some Input Actions haven't been created.
 ## Disables functionality accordingly.
@@ -171,3 +193,17 @@ func check_input_mappings():
 	if can_freefly and not InputMap.has_action(input_freefly):
 		push_error("Freefly disabled. No InputAction found for input_freefly: " + input_freefly)
 		can_freefly = false
+	if can_crouch and not InputMap.has_action(input_courch):
+		push_error("Crouching disabled. No InputAction found for input_courch: " + input_courch)
+		can_crouch = false
+
+
+
+
+
+
+
+
+func _on_animation_animation_started(anim_name:StringName) -> void:
+	if anim_name == "Crouch":
+		_is_crouching = not _is_crouching
